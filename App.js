@@ -1,17 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I'm H1 tag"),
-    React.createElement("h2", {}, "I'm H2 tag"),
-  ]),
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I'm H1 tag"),
-    React.createElement("h2", {}, "I'm H2 tag"),
-  ]),
-]);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+//  ReactElement = Object = HTML Element(render)
 
-console.log(parent);
+const heading = React.createElement(
+  "div",
+  { id: "heading" },
+  "Namste React 🚀"
+);
+const JxHeading = () => {
+  return <h1 className="h1">Jai Shree Ram 💖</h1>;
+};
+
+const Fun = () => {
+  return (
+    <>
+      <JxHeading />
+      <h1>Hello, World!</h1>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Fun />);
