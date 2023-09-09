@@ -182,3 +182,57 @@ React does not makes an App fast on it own. It needs help from some extra packag
 - Keys in Map: Key are important as it lets React to uniquely identify a component. If we have 10 items withour key, the react will treat them as same item and now if one more item is added, then it will render all 11 items. If all Items have keys than react can identify each item and knows that new item has a key that is not rendered and so it will only render the 11th item.
 
 ---
+
+### Episode 05 - Lets get Hooked
+
+- <></> => Empty tags/React.Fragments shorthand.
+
+- **Reconciliation** - React is faster because it using reconciliation/React Fiber. React creates a copy of DOM in virtual DOM. Now whenever there is change in state variable, the component re-renders and it compares the new DOM with the copy of DOM in virtual DOM and only updates the difference of the DON in the actual DOM. SO if In a component, the name of a person is in h1 tag and when the name change, the component re-renders, in this case since only the text inside h1 tag is changed, React will only chang this h1 tag in actual DOM. This is called Diff algorithm and this is what makes react super fast. It is fast because, in virtual DOM, DOM is represented as JS object and not HTML tags and comparing 2 objects is always fast.
+
+- **Export/Import**: We have 2 types of export/Import, Default and Normal.
+
+  - Default Export: One JS file can only have one default export. This kind of exports have a keyword _default_.
+
+    ```javascript
+    export default myObj;
+    ```
+
+    When importing objects that are exported with default keyword, we can use any name as the file will only have one default export. We also don't need any curly braces for importing the same the same.
+
+    ```javascript
+    import youObject from './FileName;
+    ```
+
+    This will import myObj but will be identified as yourObject in this file.
+
+  - Named Export: All export other than default export are Named export. These kind of export has no special key word. One JS file can has any number of named export.
+
+    ```javascript
+    export myObj;
+    ```
+
+    When importing these objects, we need to use curly braces and also need to use exactly same name as used to export
+
+    ```javascript
+    import { myObj } from "./FileName";
+    ```
+
+- **State Variable**: state variable a special variable in react that are defined inside a components and any change in state variable, causes the component in which the state variable is defined to re-render. We create state variable using a useState hook
+
+- **Why we need state variable**: React keeps the track of state variable. Whenever there is change in state variable, React will rerender the component and display the updated UI. On contrary, whenever there is change in local variable, React will not notice it and it will not be reflected on UI.
+
+- **Hook**: hooks are special js functions that do different task.
+
+- **useState()** => JS function (or React Hook) that returns an array of sate variable and a function used to update the value of that state.
+
+  ```javascript
+  import { useState } from "react";
+  ```
+
+  ```javascript
+  const [myState, setMyState] = useState("1");
+  ```
+
+  Above we have used a hook called useState to declare a state variable, _myState_, and a function, _setMySate_, that will be used to update the value of state variable, _myState_. We passed the value of 1 to the hook, useState, which will make the initial value of state variable, myState, as 1.
+
+---

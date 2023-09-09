@@ -45,6 +45,10 @@ body{
 .search{
     padding: 20px 10px;
 }
+.search button{
+    padding: 6px 10px;
+    cursor: pointer;
+}
 
 .res-container{
     padding: 50px 10px;
