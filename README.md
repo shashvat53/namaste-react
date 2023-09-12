@@ -236,3 +236,61 @@ React does not makes an App fast on it own. It needs help from some extra packag
   Above we have used a hook called useState to declare a state variable, _myState_, and a function, _setMySate_, that will be used to update the value of state variable, _myState_. We passed the value of 1 to the hook, useState, which will make the initial value of state variable, myState, as 1.
 
 ---
+
+### Episode 06 - Exploring the World!!
+
+- **async-await**: _await_ allow us to wait till function marked with _async_ returns. A function can me made to work asynchronously by adding a keyword _async_ before its definition. This function always returns a promise.
+
+- **useEffect Hook**: If we have a part of code that we do not want to execute every time our component re-renders, but only on certain conditions, like change in state of a specific or group of state variables, then we place that code in useEffect. Such state variables are called dependencies of eseEffect are ate passed as 2nd argument of the function in arrays. If we want to execute something only once during the lifecycle of a component, then we only pass an empty array as 2nd arguments
+
+  ```javascript
+  useEffect(() => {}, [stateVariable1, stateVariable2]);
+  ```
+
+We can have any number of useEffect in a component. It is important to note that useEffect is called after component is rendered. It is also important to know that that state variable on which useEffect() depends, is not changes inside useEffect(), else it will end up in an infinite loop. If we don't have an dependency array, then code inside useEffect() will be called every time our component re-render.
+
+- **CORS**: Cross Origin Resource Sharing. This is an mechanism that uses http headers to tells the browser if a specific webapp can share its resource with other app. The main point to note here is that both webapp should have different origin. For example, api call from local to Swiggy.
+
+- **Optional Chaining(?.)**: This is a JS feature that allows us to access properties of an object or elements of array without having to check if the object or array is null or undefined.
+
+```javascript
+  let user: {
+      name: "shashvat",
+      address: {
+          houseNumber: 102,,
+          street: "New Street",
+          country: "India"
+      }
+  }
+  console.log(user.address.state) // will return undefined.
+  console.log(user.address.state?.a) // will return undefined as we used optional chaining to access property a of undefined.
+  console.log(user.address.state.a) // will return error as we try to access property a of undefined
+```
+
+TODO: -
+
+- use fetch and axios to get live data from Swiggy API.
+
+- We make an API call in useEffect Hook().
+
+- Api call will return an readable stream which we will convert into json using data.json().
+
+- When we make an API call from localhost, our browser blocks that request for security purpose. To bypass this we use a plugin ALLOW CORS plugin which w can install from chrome store.
+
+Learn about CORS and Optional Chaining
+
+- Never create a component inside another component. No one is toping us from doing so but it is not recommended by facebook itself. This is because every time our component will be rendered, the inner component will be re-created.
+
+- Never use any hook inside an if/else block because a state variable will only be present if the condition is met and it will create inconsistencies in code. Also never use hook inside for loop as state variable life will last as long as the loop exists.
+
+- Never use useState outside functional components.
+
+---
+
+Important Notes: -
+
+You acn fix your api from this Link
+
+```
+  https://github.com/namastedev/namaste-react/commit/d3f0d801df96fb40a7d03cb411c72a469bbaef51
+```

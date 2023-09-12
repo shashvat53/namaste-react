@@ -29,6 +29,7 @@ body{
 
 .nav-items ul{
     display: flex;
+    align-items: center;
 }
 
 .nav-items ul li{
@@ -36,6 +37,19 @@ body{
     padding-left: 50px;
 }
 
+.nav-items .btn{
+    padding: 4px 12px;
+    background-color: #fff;
+    /* color: #fff; */
+    border: 1px solid #FC8523;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out;
+}
+.nav-items .btn:hover{
+    background-color: #FC8523;
+    color: #fff;
+}
 .body{
     max-width: 1400px;
     margin-inline: auto;
@@ -44,11 +58,36 @@ body{
 
 .search{
     padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.search button{
+.search .top-res{
     padding: 6px 10px;
     cursor: pointer;
 }
+.search-box input{
+    font-size: 16px;
+    padding: 6px 10px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    
+    outline: none;
+    border: 1px solid #ccc;
+    
+}
+.search-box button{
+    font-size: 16px;
+    padding: 6px 10px;
+    cursor:pointer;
+    outline: none;
+    border: 1px solid #FC8523;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: #FC8523;
+    color: #fff;
+}
+
 
 .res-container{
     padding: 50px 10px;
@@ -101,4 +140,44 @@ object-fit: cover;
 
 .card-des span{
    color: #555;
+}
+
+.shimmer-container{
+    
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: 50px 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    width: 250px;
+    height: 300px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shimmer-img{
+    margin-top: 20px;
+    width: 200px;
+    height: 150px;
+    background-color: #dadada;
+}
+
+.shimmer-heading{
+    margin-top: 20px;
+    width: 200px;
+    height: 10px;
+    background-color: #dadada;
+}
+
+.shimmer-text{
+    margin-top: 20px;
+    width: 200px;
+    height: 5px;
+    background-color: #dadada;
 }
