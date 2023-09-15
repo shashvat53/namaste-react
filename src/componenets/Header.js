@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  console.log("Header render");
+  // console.log("Header render");
   const [value, setValue] = useState("Log in");
 
   // if no dependancy array => useEffect is called after Every render

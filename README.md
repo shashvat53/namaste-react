@@ -336,3 +336,163 @@ To navigate in App, we need to define paths, clicking on which different compone
   - _useSearchParams_:
 
   - _useLocation_:
+
+### Episode 08 - Let's get Classy!!
+
+- Class component skeleton
+
+  ```javascript
+  import React from "react";
+  class MyComponent extends React.Component {
+    render()
+  }
+  ```
+
+- Its not important that every class must have constructor but if we want to use props or state in a class, those are defined only inside the constructor. The 1st line inside the constructor is always calling super constructor
+
+  ```javascript
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    }
+  }
+  ```
+
+- In order to use _this_ keyword inside any function, we need to bind keyword with the function in the constructor
+
+  ```javascript
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    };
+
+    // binding this keyword to method clickHandler
+    this.clickHandler = this.clickHandler(this);
+  }
+
+  clickHandler() {
+    this.setState(counter: this.state.counter + 1)
+  }
+  ```
+
+- In class component all states are wrapped inside one object and is use as this.state. State are always defined inside a constructor.
+
+  ```javascript
+  constructor() {
+    super();
+    this.state = {
+      name: "Shashvat",
+      skills: ["Python", "Django", "Web Scraping", "JS5", "GIT", "React18"],
+      niche: "React Developer",
+      employment: {
+        previous: ["Wipro", "Apple", "Google"],
+        current: ["Freelancer"]
+      }
+    }
+  }
+  ```
+
+  Here we have 4 different state, _name_, _skills_ and _niche_ and _employment_.Each state is independent from each other and when one state is changed, it doesn't affect the other.
+
+- In order to change state, we use this.setState() function. In this function we only use the state that we want to manipulate and. All other state not used in setState will remain unchanged.
+
+  ```javascript
+  constructor() {
+    super();
+    this.state = {
+      name: "Shashvat",
+      skills: ["Python", "Django", "Web Scraping", "JS5", "GIT", "React18"],
+      niche: "React Developer",
+      employment: {
+        previous: ["Wipro", "Apple", "Google"],
+        current: ["Freelancer"]
+      }
+    }
+
+    this.changeNiche = this.changeNiche.bind(this);
+  }
+
+  // function to change Niche of state
+  changeNiche() {
+    this.setState({
+      niche: "Full Stack Developer"
+    })
+  }
+  ```
+
+  Here only the Niche state will change and other will remain unchanged.
+
+#### **SEQUENCE OF METHOD CALL IN CLASS COMPONENT**
+
+- _MOUNTING PHASE_
+
+  - Constructor
+  - Render
+  - ComponentDidMount
+
+- _UPDATING PHASE_
+
+  - Render
+  - ComponentDidUpdate
+
+- _UNMOUNTING PHASE_
+  - ComponentWillUnmount
+
+Assume below code. We have a Component A that has children component A1 and A2. Similarly we have B Component with Childress B1 and B2.
+
+```javascript
+render () {
+  <A>
+    <A1 />
+    <A2 />
+  </A>
+  <B>
+    <B1 />
+    <B2 />
+  </B>
+}
+```
+
+The sequence of the lifecycle method will be:
+
+- When Page Loads (Mounting Phase):
+
+  - A => Constructor
+  - A => Render
+  - A1 => Constructor
+  - A1 => Render
+  - A2 => Constructor
+  - A2 => Render
+  - A1 => ComponentDidMount
+  - A2 => ComponentDidMount
+  - A => ComponentDidMount
+  - B => Constructor
+  - B => Render
+  - B1 => Constructor
+  - B1 => Render
+  - B2 => Constructor
+  - B2 => Render
+  - B1 => ComponentDidMount
+  - B2 => ComponentDidMount
+  - B => ComponentDidMount
+
+- When we updates state of A (Updating Phase):
+
+  - A => Render
+  - A1 => Render
+  - A2 => Render
+  - A1 => ComponentDidUpdate
+  - A2 => ComponentDidUpdate
+  - A => ComponentDidUpdate
+
+- When we unloads the Entire component (Unmounting Phase)
+
+  - A => ComponentWillUnmount
+  - A1 => ComponentWillUnmount
+  - A2 => ComponentWillUnmount
+
+- Best place to make an API call is componentDidMount
+
+#### **SEQUENCE OF METHOD CALL IN FUNCTIONAL COMPONENT**

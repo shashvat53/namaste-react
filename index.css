@@ -181,3 +181,8 @@ object-fit: cover;
     height: 5px;
     background-color: #dadada;
 }
+
+.user{
+    padding: 10px;
+    border: 1px solid #ccc;
+}
