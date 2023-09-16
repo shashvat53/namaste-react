@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   let [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -19,7 +20,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2599333&lng=77.412615&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setListOfRestaurant(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -27,6 +28,11 @@ const Body = () => {
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  // const onlineStatus = useOnlineStatus();
+  // if (onlineStatus === false) {
+  //   return <h1>Please Check Your Internet 🟥</h1>;
+  // }
 
   if (listOfRestaurant.length === 0) {
     return <Shimmer />;

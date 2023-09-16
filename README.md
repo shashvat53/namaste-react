@@ -495,4 +495,12 @@ The sequence of the lifecycle method will be:
 
 - Best place to make an API call is componentDidMount
 
-#### **SEQUENCE OF METHOD CALL IN FUNCTIONAL COMPONENT**
+### Episode 09 - Optimising Our App!!
+
+- We can also make custom Hooks and use them anywhere to our application
+
+- Code splitting, Chunking, lazy loading, Dynamic importing
+
+  - When Your build large scale production level application and there are lots of components, so in this case we have to do code spilliting or chunking to our app becoz if we will not do this so our application performance will be slow.
+
+  - It basically breakdown our application into small small chunks or different js files.
