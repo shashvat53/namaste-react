@@ -1,44 +1,48 @@
 import { LOGO_CDN_URL } from "../utils/constants";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   // console.log("Header render");
   const onlineStatus = useOnlineStatus();
   const [value, setValue] = useState("Log in");
+  console.log("header");
+
+  const { logedInUser } = useContext(UserContext);
 
   // if no dependancy array => useEffect is called after Every render
   // if dependancy array is epmty [] => useEffect is called on initial render (just once)
   // useEffect(() => {
   //   console.log("useEffect");
   // }, []);
-
+  console.log("header");
   return (
-    <div className="header">
-      <div className="header-container">
-        <div className="logo-container">
-          <img src={LOGO_CDN_URL} className="log" />
+    <div className="header w-full shadow-lg">
+      <div className="max-w-[1400px] mx-auto  flex justify-between items-center">
+        <div className="">
+          <img src={LOGO_CDN_URL} className="w-28" />
         </div>
-        <div className="nav-items">
-          <ul>
-            <li>Online Status:{onlineStatus ? "✅" : "❌"}</li>
-            <li>
+        <div className="nav-items ">
+          <ul className="flex  ">
+            <li className="pl-8">Online Status:{onlineStatus ? "✅" : "❌"}</li>
+            <li className="pl-8">
               <Link to="/">Home</Link>{" "}
             </li>
-            <li>
+            <li className="pl-8">
               <Link to="/about">About Us</Link>
             </li>
-            <li>
+            <li className="pl-8">
               <Link to="/contact">Contact Us</Link>
             </li>
-            <li>
+            <li className="pl-8">
               <Link to="/grocery">Grocery</Link>
             </li>
-            <li>Cart</li>
-            <li>
+            <li className="pl-8">Cart</li>
+            <li className="pl-8">
               <button
-                className="btn"
+                className="border border-orange px-[8px]"
                 onClick={() => {
                   value === "Log in" ? setValue("Log out") : setValue("Log in");
                 }}
@@ -46,6 +50,7 @@ const Header = () => {
                 {value}
               </button>
             </li>
+            <li className="pl-8">{logedInUser}</li>
           </ul>
         </div>
       </div>

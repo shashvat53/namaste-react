@@ -1,18 +1,25 @@
+import { useContext } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, avgRating, cuisines, areaName } =
     resData.info;
+
+  const { logedInUser } = useContext(UserContext);
   // console.log(props);
   return (
-    <div className="res-card">
-      <div className="res-image">
-        <img src={IMG_CDN_URL + cloudinaryImageId} />
+    <div className="w-[300px]">
+      <div className="res-image h-[200px] w-full">
+        <img
+          src={IMG_CDN_URL + cloudinaryImageId}
+          className="h-full w-full object-cover rounded-lg hover:scale-100"
+        />
       </div>
       <div className="card-des">
-        <h3>{name}</h3>
-        <h4>
+        <h3 className="text-lg font-medium">{name}</h3>
+        <h4 className="flex gap-3 items-center">
           <svg
             width="20"
             height="20"
@@ -50,7 +57,10 @@ const RestaurantCard = (props) => {
           {avgRating}
         </h4>
         <span className="cuisince">{cuisines.join(", ")}</span>
+        <br />
         <span>{areaName}</span>
+        <br />
+        <span>User: {logedInUser}</span>
       </div>
     </div>
   );
