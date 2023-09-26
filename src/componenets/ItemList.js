@@ -1,7 +1,16 @@
 // import { ITEM_IMG_CDN } from "../utils/constants";
 
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+
 const ItemList = (items) => {
   //   console.log(items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       <div className="w-full text-left">
@@ -28,7 +37,10 @@ const ItemList = (items) => {
                 }
                 className="w-[118px] rounded "
               />
-              <button className="absolute right-[20px] bottom-0 p-[2px_18px] bg-white shadow-lg rounded">
+              <button
+                className="absolute right-[20px] bottom-0 p-[2px_18px] bg-white shadow-lg rounded"
+                onClick={() => handleAddItem(item)}
+              >
                 Add
               </button>
             </div>

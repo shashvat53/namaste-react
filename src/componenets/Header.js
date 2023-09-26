@@ -3,12 +3,14 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   // console.log("Header render");
   const onlineStatus = useOnlineStatus();
   const [value, setValue] = useState("Log in");
-  console.log("header");
+
+  const cartItem = useSelector((store) => store.cart.items);
 
   const { logedInUser } = useContext(UserContext);
 
@@ -17,7 +19,7 @@ const Header = () => {
   // useEffect(() => {
   //   console.log("useEffect");
   // }, []);
-  console.log("header");
+
   return (
     <div className="header w-full shadow-lg">
       <div className="max-w-[1400px] mx-auto  flex justify-between items-center">
@@ -39,7 +41,9 @@ const Header = () => {
             <li className="pl-8">
               <Link to="/grocery">Grocery</Link>
             </li>
-            <li className="pl-8">Cart</li>
+            <li className="pl-8 font-bold text-xl">
+              <Link to="/cart">Cart ({cartItem.length})</Link>
+            </li>
             <li className="pl-8">
               <button
                 className="border border-orange px-[8px]"

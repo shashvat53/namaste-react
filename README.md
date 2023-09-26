@@ -504,3 +504,22 @@ The sequence of the lifecycle method will be:
   - When Your build large scale production level application and there are lots of components, so in this case we have to do code spilliting or chunking to our app becoz if we will not do this so our application performance will be slow.
 
   - It basically breakdown our application into small small chunks or different js files.
+
+### Episode 11 - Lets build Our App!!
+
+- redux is diiferent librery and react is different
+
+  - when you build large scale application (like make my trip) there are lots of components and states then we use redux, it is easy to debugging and handle the data and .
+
+  - if we have to build small or mid level application then we go with context API.
+
+  - React is not just library for managing state there is something known as Zustand libray for managing states but lots company use the redux thats why redux is very Popular.
+
+# Redux toolkit:-
+
+- install @reduxjs/toolkit and react-redux
+- build our store
+- connect our app to store
+- create a slice
+- dispatch(action)
+- selector
